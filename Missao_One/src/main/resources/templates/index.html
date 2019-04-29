@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+a{
+font-size: 20px;
+color: white;
+padding: 10px;
+display: inline-block;
+background-color: #BEBEBE;
+text-decoration: none;
+font-family: Helvetica, sans-serif;
+border: 2px #cecece solid;
+}
+</style>
+<meta charset="UTF-8">
+<title>Primeira Missão</title>
+</head>
+<body>
+<!-- <a th:href="@{http://www.google.com/a.html}"> -->
+<nav class="navbar">
+<ul>
+<a th:href="@{GeraSenha}">Gerar senha</a>
+<a th:href="@{VSenha}">Verificar Senha</a>
+<a th:href="@{UpSenha}">Atualizar Senha</a>
+<a th:href="@{DelSenha}">Excluir Senha</a>
+<a th:href="@{PSenha}">Pesquisar Senha</a>
+</ul>
+</nav>
+
+</body>
+</html>
