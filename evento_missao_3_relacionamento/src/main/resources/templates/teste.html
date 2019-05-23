@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/pageStyle.css"/>
+<meta charset="UTF-8" />
+<title>WEB2 :: LOCAL_EVENTO</title>
+</head>
+<body>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="logo"> < Encontre aquele Evento <br> Pertinho de você/> </span> <a class="navbar-brand"> <img
+				src="/img/inovaBra.png" width="200" height="120"
+				class="d-inline-block align-top"  alt="Evento">
+			</a>
+		</nav>
+	</header>
+	<!-- FIM DO CABECALHO -->
+		<h4 class="card-title">ÚLTIMOS LOCAIS CADASTRADOS</h4>
+					<hr class="linha">
+					
+					<!-- INICIO DA TABELA -->
+					<table class="table table-bordered">
+  					<thead>
+  					<tr>
+   					<th>NOME DO LOCAL</th>
+					<th>CAPACIDADE DE PESSOAS</th>
+					<th>Link Google Maps</th>
+					<th>AÇÃO</th>
+					</tr>
+					</thead>
+					<tr th:each="list : ${lista}">
+					<td th:text="${list.nome}"></td>
+					<td th:text="${list.capacidade}"></td>
+					<td th:text="${list.linkMaps}"></td>
+					<td>
+					<a th:href="@{/editarLocal(id_local=${list.id_local})}">Editar Local</a> 
+					&nbsp;&nbsp;
+					<a th:href="@{/removerLocal(id_local=${list.id_local})}">Remover Local</a>
+					</td>
+					</tr>
+					</table>
+	
+
+</body>
+</html>
