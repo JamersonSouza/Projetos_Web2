@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/pageStyle.css" />
+<meta charset="UTF-8" />
+<title>WEB2 :: EVENTOS</title>
+</head>
+<body>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="logo"> < Encontre aquele Evento <br>
+				Pertinho de você/>
+			</span> <a class="navbar-brand"> <img src="/img/inovaBra.png"
+				width="200" height="120" class="d-inline-block align-top"
+				alt="Evento">
+			</a>
+		</nav>
+	</header>
+	<!-- FIM DO CABECALHO -->
+	<br>
+
+
+	<div class="card panel-default">
+			<div class="card-heading">
+				<br>
+				<h4 class="card-title">PESQUISA DE EVENTOS</h4>
+				
+			<hr>
+			<div class="card-heading">
+			<table class="table table-bordered">
+  					<thead>
+  					<tr>
+   					<th>NOME DO EVENTO</th>
+					<th>DATA DE REALIZAÇÃO</th>
+					<th>NOME DO RESPONSÁVEL</th>
+					<th>CONTATO DO RESPONSÁVEL</th>
+					<th>AÇÃO</th>
+					</tr>
+					</thead>
+					<tr th:each="cont : ${evento-lista}">
+					<td th:text-center="${cont.nome_evento}"></td>
+					<td th:text-center="${cont.data_realizacao}"></td>
+					<td th:text-center="${cont.nome_responsavel}"></td>
+					<td th:text-center="${cont.telefone_responsavel}"></td>
+					<td>
+					<a th:href="@{/editarEvento(id_evento=${cont.id_evento})}">Editar</a> 
+					&nbsp;&nbsp;
+					<a th:href="@{/removerEvento(id_evento=${cont.id_evento})}">Remover</a>
+					</td>
+				</tr>
+			</table>
+			</div>
+</body>
+</html>

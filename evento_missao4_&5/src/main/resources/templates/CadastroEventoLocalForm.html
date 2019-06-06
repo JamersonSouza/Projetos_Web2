@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/pageStyle.css">
+<meta charset="UTF-8" />
+<title>CADASTRO :: LOCAL EVENTO</title>
+</head>
+<body>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="logo"> < Encontre aquele Evento <br>
+				Pertinho de você! />
+			</span> <a class="navbar-brand"> <img src="/img/inovaBra.png"
+				width="200" height="120" class="d-inline-block align-top"
+				alt="Evento">
+			</a>
+		</nav>
+	</header>
+	<!--  FIM DO CABECALHO -->
+	<br><br>
+	<form th:action="@{/addLocal}" th:object="${localEvento}" method="post" id="form_Two">
+	
+	<!--  MENSAGEM AO FINALIZAR -->
+	
+	<div id="alerta" class="alert alert-success" th:if="${!#strings.isEmpty(msg)}"> 
+	<strong>Local Inserido Com Sucesso!</strong>
+	</div>
+	
+	
+				<!-- INPUT NOME DO LUGAR -->
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="nomeLugar">NOME DO LOCAL:</label>
+				<div class="col-sm-4">
+					<input type="text" th:field="*{nome}" class="form-control" required="required" placeholder="Exemple: Recife Antigo"
+					 id="nomeLugar">
+				</div>	
+			</div>
+					<!-- INPUT ENDEREÇO -->
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="DescEndereco">ENDEREÇO:</label>
+					<div class="col-sm-4">
+						<input type="text" th:field="*{endereco}" class="form-control" required="required"
+						placeholder="Exemple: Rua da Moeda, 87" id="DescEndereco"
+						>
+					</div>
+			</div>	
+					<!-- LINK GOOGLE MAPS -->
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="linkMaps">LINK GOOGLE MAPS:</label>
+					<div class="col-sm-4">
+						<input type="text" th:field="*{linkMaps}" class="form-control" required="required"
+						placeholder="Exemple: https://www.google.com/maps" id="linkMaps"
+						>
+					</div>
+			</div>
+					<!-- CAPACIDADE DE PESSOAS -->
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="numPessoas">CAPACIDADE DE PESSOAS:</label>
+					<div class="col-sm-4">
+						<input type="number" th:field="*{capacidade}" class="form-control" required="required"
+						placeholder="Exemple: 100" id="numPessoas"
+						>
+					</div>
+			</div>	
+						<!-- TIPO DO LOCAL -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label">Tipo do Local:</label>
+				<div class="col-sm-4">
+									<select th:field="*{TipoLocal}" class="custom-select">
+						<option value="ABERTO">ABERTO</option>
+						<option value="FECHADO">FECHADO</option>
+					</select>
+				</div>
+			</div>	
+				<div class="col-sm-2 offset-sm-4 col-sm-10">
+				<br><br>
+			<button type="submit" class="btn btn-danger">ENVIAR!</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btn-outline-secondary"
+				th:href="@{cadastrarEvento}">VOLTAR</a>
+			</div>	
+	</form>
+</body>
+</html>

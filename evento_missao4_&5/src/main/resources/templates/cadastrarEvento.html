@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/pageStyle.css"/>
+<meta charset="UTF-8" />
+<title>WEB2 :: LOCAL_EVENTO</title>
+</head>
+<body>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="logo"> < Encontre aquele Evento <br> Pertinho de você/> </span> <a class="navbar-brand"> <img
+				src="/img/inovaBra.png" width="200" height="120"
+				class="d-inline-block align-top"  alt="Evento">
+			</a>
+		</nav>
+	</header>
+	<!-- FIM DO CABECALHO -->
+
+<br>
+
+	<div class="card panel-default">
+		<div class="card-heading">
+			<br>
+			
+			<h4 class="card-title">CADASTRE O LOCAL DO SEU EVENTO!</h4>
+			
+			<hr class="linha">
+			<br><br>
+			<center>
+			<a  class="btn btn-outline-danger" th:href="@{CadastroEventoLocalForm}">+NOVO LOCAL</a>
+				<br><br>	
+				<a class="btn btn-outline-secondary" th:href="@{web2}">VOLTAR</a>
+				</center>
+				<br><br>
+				<h4 class="card-title">ÚLTIMOS LOCAIS CADASTRADOS</h4>
+					<hr class="linha">
+					
+					<!-- INICIO DA TABELA -->
+					<table class="table table-bordered" id="tabela">
+  					<thead>
+  					<tr>
+   					<th>NOME DO LOCAL</th>
+					<th>CAPACIDADE DE PESSOAS</th>
+					<th>Link Google Maps</th>
+					<th>AÇÃO</th>
+					</tr>
+					</thead>
+					<tr th:each="list : ${lista}">
+					<td th:text="${list.nome}"></td>
+					<td th:text="${list.capacidade}"></td>
+					<td th:text="${list.linkMaps}"></td>
+					<td>
+					<a 	th:href="@{/editarLocal(id_local=${list.id_local})}">Editar Local</a> 
+					&nbsp;&nbsp;
+					<a th:href="@{/removerLocal(id_local=${list.id_local})}">Remover Local</a>
+					</td>
+					</tr>
+					</table>
+					
+</div>
+	</div>
+
+</body>
+</html>

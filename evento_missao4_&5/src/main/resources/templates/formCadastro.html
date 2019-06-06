@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/pageStyle.css">
+<meta charset="UTF-8" />
+<title>CADASTRO :: EVENTO</title>
+</head>
+<body>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="logo"> < Encontre aquele Evento <br>
+				Pertinho de você! />
+			</span> <a class="navbar-brand"> <img src="/img/inovaBra.png"
+				width="200" height="120" class="d-inline-block align-top"
+				alt="Evento">
+			</a>
+		</nav>
+	</header>
+	<!-- FIM DO CABECALHO -->
+	<br>
+	<form th:action="@{/addEvento}" th:object="${evento}" method="POST"
+		id="form_one">
+	<div id="alerta" class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}"> 
+	<strong>Evento Inserido Com Sucesso!</strong>
+	</div>
+	<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+	<div th:each="detailedError : ${#fields.detailedErrors()}">
+		<span th:text="${detailedError.message}"></span>
+		</div>
+	</div>
+	<br>
+		<!-- INPUT Nome -->
+		<div class="form-group row" th:classappend="${#fields.hasErrors('nome_evento')} ? was-validated">
+			<label class="col-sm-2 control-label" for="nome_evento">NOME
+				DO EVENTO:</label>
+			<div class="col-sm-4">
+				<input type="text" placeholder="Exemple: JamersonFest" class="form-control"
+					name="nome_evento" th:field="*{nome_evento}">
+			</div>
+		</div>
+		<!-- INPUT DESCRICAO -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label" for="descricao_evento">DESCRIÇÃO
+				DO EVENTO:</label>
+			<div class="col-sm-4">
+				<input type="text" placeholder="Fale Sobre Seu Evento" class="form-control"
+					name="descricao_evento" th:field="*{descricao_evento}">
+			</div>
+		</div>
+		<!-- DATA DO EVENTO -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label" for="data_realizacao">DATA
+				DO EVENTO:</label>
+			<div class="col-sm-4">
+				<input type="date" placeholder="Exemple: 01/01/1901" class="form-control"
+					name="data_realizacao" th:field="*{data_realizacao}">
+			</div>
+		</div>
+		<!-- QTD PESSOAS qtdMaxPessoas -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label" for="qtdMaxPessoas">NUMERO
+				DE CONVIDADOS:</label>
+			<div class="col-sm-4">
+				<input type="text" placeholder="Exemple: 10"
+					class="form-control" name="qtdMaxPessoas"
+					th:field="*{qtdMaxPessoas}">
+			</div>
+		</div>
+		<!-- INPUT NOME_Responsavel -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label" for="nome_responsavel">RESPONSÁVEL
+				DO EVENTO:</label>
+			<div class="col-sm-4">
+				<input type="text" placeholder="Exemple: Zé"
+					class="form-control" name="nome_responsavel"
+					th:field="*{nome_responsavel}">
+			</div>
+		</div>
+		<!-- INPUT Tel_Respon_Event -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label" for="telefone_responsavel">Telefone:</label>
+			<div class="col-sm-4">
+				<input type="text" pattern="^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"
+					placeholder="(xx) xxxxx-xxxx" class="form-control"
+					name="telefone_responsavel" th:field="*{telefone_responsavel}">
+			</div>
+		</div>
+		<!-- INPUT Horário -->
+		<div class="form-group row">
+			<label class="col-sm-2 control-label" for="duracao_horas">Duração
+				do Evento: </label>
+			<div class="col-sm-4">
+				<input type="time" class="form-control"
+					name="duracao_horas" th:field="*{duracao_horas}"> <small
+					id="horarioHelp">Insira a duração em <strong>horas</strong>
+					do seu evento
+				</small>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="col-sm-2 offset-sm-4 col-sm-10">
+			<button type="submit" class="btn btn-primary">ENVIAR!</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btn-outline-primary"
+				th:href="@{web2}">VOLTAR</a>
+		</div>
+	</form>
+</body>
+</html>
